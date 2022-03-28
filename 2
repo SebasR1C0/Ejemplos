@@ -1,0 +1,31 @@
+Algoritmo aa
+	Definir original como Entero
+	Definir soles1 como Entero
+	Definir soles2 como Entero
+	Definir soles5 como Entero
+	Definir soles10 como Entero
+	Definir soles20 como Entero
+	Definir soles50 como Entero
+	Definir soles100 como Entero
+	leer original
+	soles100 = trunc(original/100)
+	original =original mod 100
+	soles50=trunc(original/50)
+	original =original mod 50
+	soles20=trunc(original/20)
+	original= original mod 20
+	soles10=trunc(original/10)
+	original= original mod 10
+	soles5=trunc(original/5)
+	original= original mod 5
+	soles2=trunc(original/2)
+	soles1=original mod 2
+	
+	Escribir "monedas de 1 sol:" soles1
+    Escribir "monedas de 2 sol:" soles2
+    Escribir "monedas de 5 sol:" soles5
+    Escribir "monedas de 10 sol:" soles10
+    Escribir "monedas de 20 sol:" soles20
+    Escribir "monedas de 50 sol:" soles50
+    Escribir "monedas de 100 sol:" soles100
+	FinAlgoritmo
