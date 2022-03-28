@@ -1,0 +1,18 @@
+Algoritmo c
+	//Perwita convertir calificaciones nméricas,
+	//según la siguiente tabla: A - 19 o 18, A -16, 17o 15,
+	//C - 13, 14 o 12, D - 10, 11 o 9, E -0 hasta el 8.
+	//Se asume que la calificación está comprendida entre y 28
+	definir nota como entero
+	leer nota
+	nota = nota-1
+	Segun trunc(nota/3) hacer
+		0:1:2:Escribir "E"
+		3:Escribir "D"
+		4:Escribir "C"
+		5:Escribir "B"
+		6:Escribir "A"
+	De Otro Modo:
+		Escribir "Error 404"
+	Fin Segun
+FinAlgoritmo
