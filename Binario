@@ -1,0 +1,16 @@
+Algoritmo bb
+	Definir original Como Entero
+	Definir binario Como Entero
+    leer original
+	binario=original mod 2
+	original=trunc(original/2)
+	binario = binario+(original mod 2)*10
+	original=trunc(original/2)
+	binario=binario+(original mod 2)*100
+	original=trunc(original/2)
+	binario=binario+(original mod 2)*1000
+	original=trunc(original/2)
+	binario=binario+(original mod 2)*10000
+	original=trunc(original/2)
+	Escribir binario
+Finalgoritmo
