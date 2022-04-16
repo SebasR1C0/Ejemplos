@@ -23,7 +23,7 @@ int main() {
                 cout << "Posible rescate";
             }
             else {
-                if (grado >= 15e0 && grado < 1800) {
+                if (grado >= 1500 && grado < 1800) {
                     cout<< "Rescate en alerta amarilla";
                 }
                 else {
