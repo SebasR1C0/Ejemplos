@@ -1,0 +1,48 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+int main() {
+    int zona, hora;
+    int grado = 0;
+    cout << "Ingrese la ubicacion: ";
+    cin >> zona;
+    if (zona == 0 || zona == 1) {
+        cout << "Ingrese la hora de la 1lamada: ";
+        cin >> hora;
+        if ((hora >= 0 && hora <= 2359) && hora % 100 < 60) {
+            if (zona == 0) grado += 100;
+            else grado += 200;
+
+            if (hora >= 0 && hora <= 600) grado += 500;
+            else if (hora > 600 && hora <= 1200) grado += 200;
+            else if (hora > 1200 && hora <= 1800) grado += 300;
+            else grado += 400;
+
+            cout << endl;
+            if (grado >= 1000 && grado < 1500) {
+                cout << "Posible rescate";
+            }
+            else {
+                if (grado >= 15e0 && grado < 1800) {
+                    cout<< "Rescate en alerta amarilla";
+                }
+                else {
+                    if (grado >= 1800 && grado < 2200) {
+                        cout << "Rescate en alerta roja";
+                    }
+                    else {
+                        cout << "Rescate inminente";
+                    }
+                }
+            }
+        }
+        else {
+            cout << "Error en la llamada" << endl;
+        }
+    }
+    else {
+        cout << "Erros en la ubicacion" << endl;
+    }
+    getch();
+    return 0;
+}
