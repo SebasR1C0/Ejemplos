@@ -1,0 +1,18 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+void Suma(int n) {
+    int cont = 1, suma=0;
+    while (cont <= n) {
+        suma = suma + pow(cont, 2);
+        cont++;
+    }
+    cout << "La suma es: "<<suma<<endl;
+}
+int main() {
+    int a;
+    cout << "Ingresa el valor de n" << endl;
+    cin >> a;
+    Suma(a);
+    return 0;
+ }
