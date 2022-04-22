@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int a,b, cociente = 0 ;
+    cout << "Ingresa el numerado:" << endl;
+    cin >> a;
+    cout << "Ingresa el denominador:" << endl;
+    cin >> b;
+    while (a>=b) {
+        a = a - b;
+        cociente++;
+    }
+    cout << "Cociente: " << cociente << endl;
+    cout << "Resto: " << a << endl;
+    return 0;
+ }
