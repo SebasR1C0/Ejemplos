@@ -10,16 +10,16 @@ void ale(int n, float a) {
 		b = b + r1;
 		r1 = r1 + 2;
 	}
-	cout << "La suma es : " << b+2 << endl;
+	cout << "La suma es : " << suma << endl;
 }
 int main() {
 	int n,a;
 	do {
-		cout << "Ingrese el valor de N";
+		cout << "Ingrese el valor de N: ";
 		cin >> n;
 	} while (n <= 0); 
 	do {
-		cout << "Ingrese el valor de a";
+		cout << "Ingrese el valor de a: ";
 		cin >> a;
 	} while (a<1 || a>4);
 	ale(n, a);
