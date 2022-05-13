@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+void espacio(int b) {
+	for (int a = 1; a <= b; a++) {
+		cout << " ";
+	}
+}
+void ale(int n) {
+	int a = n;
+	int z = n;
+	for (int i = 1; i <= n; i++) {
+		espacio(a);
+		a--;
+		for (int j = 1; j <= i * 2 - 1; j++) {
+			if (j == 1 || j == i * 2 - 1) {
+				cout << "*";
+			}
+			else {
+				cout << " ";
+			}
+		}
+		cout << endl;
+	}
+	for (int c = 1; c <= n; c++) {
+		espacio(c + 1);
+		z--;
+		for (int b = 1; b <= z * 2 - 1; b++) {
+			if (b == 1 || b == z * 2 - 1) {
+				cout << "*";
+			}
+			else {
+				cout << " ";
+			}
+		}
+		cout << endl;
+	}
+}
+int main() {
+	int n;
+	do {
+		cout << "Ingrese N: ";
+		cin >> n;
+	} while (n > 10 || 1 > n);
+	ale(n);
+	return 0;
+}
