@@ -1,0 +1,18 @@
+#include <iostream>
+#include <windows.h>
+using namespace std;
+int main(){
+	HANDLE salida = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(salida, FOREGROUND_RED);
+	cout << "texto en rojo" << endl;
+	SetConsoleTextAttribute(salida, FOREGROUND_GREEN);
+	cout << "texto en verde" << endl;
+	COORD c;
+	c.X = 5;
+	c.Y = 10;
+	SetConsoleCursorPosition(salida, c);
+	SetConsoleTextAttribute(salida, FOREGROUND_BLUE);
+	cout << "texto de color azul en posicion " << c.X << c.Y << endl;
+	cout << "nuevo texto" << endl;
+	return 0;
+}
