@@ -1,11 +1,17 @@
 #include <iostream>
 using namespace std;
 int main() {
-	int* x;
-	x = new int;
-	*x = 5;
-	cout << "La direccion a la que apunta es: " << x << endl;
-	cout << "El valor es: " << *x << endl;
+	int a, b, * x, * y;
+	 x = new int;
+	 y = new int;
+	 cout << "El valor del primer numero es: ";
+	 cin >> *x;
+	cout << "El valor del segundo numero es: ";
+	cin >> *y;
+	cout << "La suma de los puntero es: " << *x + *y << endl;
+	cout << "La resta de los puntero es: " << *x - *y << endl;
+	cout << "El producto de los puntero es: " << *x * *y << endl;
 	delete x;
+	delete y;
 	return 0;
 }
