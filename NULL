@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+int main() {
+	int* x = new int;
+	if (x == NULL) {
+		cout << "No se pudo asignar memoria " << endl;
+	}
+	else {
+		cout << "Asignar numero ";
+		cin >> *x;
+		*x += 5;
+		cout << "El valor del incremento es: " << *x << endl;
+		delete x;
+	}
+	return 0;
+}
