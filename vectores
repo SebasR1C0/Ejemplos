@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+int main() {
+	int a, b;
+	do {
+		cout << "Ingresar el numero de alumnos: ";
+		cin >> a;
+	} while (a<1);
+	int* x = new int[a];
+	cout << endl;
+	for (int i = 0; i < a;i++){
+		do {
+			cout << "Ingrese la edad del alumno ( mayor de 3 anos ): ";
+			cin >> b;
+		} while (b < 3);
+		x[i] = b;
+	}
+	cout << endl;
+	for (int i = 0; i <= a; i++) {
+		cout << "La edad del alumno " << i+1 << " es: " << x[i] << endl;
+	}
+	delete[] x;
+	return 0;
+}
