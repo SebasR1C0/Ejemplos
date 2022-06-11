@@ -1,0 +1,51 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+using namespace System;
+void generar(char* vec, int n) {
+	Random r;
+	for (int i = 0; i < n; i++) {
+		vec[i] = r.Next('A', 'Z' + 1);
+	}
+}
+void mostrar(char* vec, int n) {
+	for (int i = 0; i < n; i++) {
+		cout << vec[i] << " ";
+	}
+	cout << endl;
+}
+bool existeSW(char* vec, int n) {
+	if (vec[0] == 'S' && vec[n - 1] == 'W') return true;
+	return false;
+}
+bool existeSIS(char* vec, int n) {
+	for (int i = 0; i < n; i++) {
+		if (vec[i] == 'S' && vec[i + 2] == 'I' && vec[i + 4] == 'S') return true;
+	}
+	return false;
+}
+int main() {
+	Random r;
+	int n, cont = 1;
+	char* vec;
+	while (1) {
+		n = r.Next(20, 31);
+		vec = new char[n];
+		generar(vec, n);
+		cout << "MENSAJE N " << cont << " :";
+		mostrar(vec, n);
+		if (existeSW(vec, n)) {
+			cout << "ES UN ALUMNO DE SOFTWARE" << endl;
+			_getch();
+		}
+		if (existeSIS(vec, n)) {
+			cout << "ES UN ALUMNO DE SISTEMAS" << endl;
+			_getch();
+		}
+		cont++;
+		_sleep(40);
+	}
+	_getch();
+	delete[]vec;
+	return 0;
+}
