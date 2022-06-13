@@ -1,0 +1,161 @@
+#include <iostream>
+#include <windows.h>
+using namespace std;
+void logo(int i, int j) {
+	HANDLE salida = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(salida, FOREGROUND_RED);
+	if (i == 4 && j == 40) {
+		cout << char(218);
+	}
+	else if (j == 79 && i == 4) {
+		cout << char(191);
+	}
+	else if (j == 40 && i == 19) {
+		cout << char(192);
+	}
+	else if (j == 79 && i == 19) {
+		cout << char(217);
+	}
+	else if ((j == 40 || j == 79) && (i >= 4 && i <= 19)) {
+		cout << char(179);
+	}
+	else if ((i == 4 || i == 19) && (j >= 40 && j <= 79)) {
+		cout << char(196);
+	}
+	if ((i == 6) && (j == 46 || j == 52)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 7) && (j == 46 || j == 51)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 8) && (j == 46 || j == 50)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 9) && (j == 46 || j == 49)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 10) && (j == 46 || j == 48 || j == 55)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 11) && (j == 46 || j == 47 || j == 58 || j == 64 || j == 67 || j == 68 || j == 69
+		|| j == 70 || j == 71 || j == 72)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 12) && (j == 46 || j == 47 || j == 55 || j == 58 || j == 59 || j == 64 || j == 67)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 13) && (j == 46 || j == 48 || j == 55 || j == 58 || j == 60 || j == 64 || j == 67)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 14) && (j == 46 || j == 49 || j == 55 || j == 58 || j == 61 || j == 64 || j == 67
+		|| j == 69 || j == 70 || j == 71 || j == 72)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 15) && (j == 46 || j == 50 || j == 55 || j == 58 || j == 62 || j == 64 || j == 67
+		|| j == 72)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 16) && (j == 46 || j == 51 || j == 55 || j == 58 || j == 63 || j == 64
+		|| j == 67 || j == 72)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 17) && (j == 46 || j == 52 || j == 55 || j == 58 || j == 64 || j == 67
+		|| j == 68 || j == 69 || j == 70 || j == 71 || j == 72)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+
+	if (i == 23 && j == 5) {
+		cout << "	Integrantes:" << endl;
+		cout << "	Rojas Cadillo, Cesar Sebastian" << endl;
+		cout << "	Cardenas Coronado, Jose Isaac" << endl;
+		cout << "	Chipana Zambrano, Kenneth Pedro" << endl;
+	}
+}
+void instrucciones(int i, int j) {
+	if (i == 5 && j == 5) {
+		cout << "	Instrucciones:" << endl;
+	}
+}
+void ganador(int i, int j) {
+	if (i == 5 && j == 5) {
+		cout << "	El ganador es:" << endl;
+	}
+}
+void contorno(int *a) {
+	HANDLE salida = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD c;
+	for (int i = 1; i <= 28; i++) {
+		for (int j = 2; j <= 117; j++) {
+			c.X = j;
+			c.Y = i;
+			SetConsoleCursorPosition(salida, c);
+			switch (*a) {
+			case 1: logo(i, j);
+				break;
+			case 2:instrucciones(i,j);
+				break;
+			case 3: ganador(i, j);
+			}
+			SetConsoleTextAttribute(salida, FOREGROUND_INTENSITY);
+			if (i == 1 && j == 2) {
+				cout << char(201);
+			}
+			else if (j == 117 && i == 1) {
+				cout << char(187);
+			}
+			else if (j == 2 && i == 28) {
+				cout << char(200);
+			}
+			else if (j == 117 && i == 28) {
+				cout << char(188);
+			}
+			else if (j == 2 || j == 117) {
+			cout << char (186);
+			}
+			else if (i == 1 || i== 28) {
+			cout << char(205);
+			}
+		}
+	}
+}
+void clean() {
+	HANDLE salida = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD c;
+	for (int i = 0; i <= 29; i++) {
+		for (int j = 0; j <= 129; j++) {
+			c.X = j;
+			c.Y = i;
+			SetConsoleCursorPosition(salida, c);
+			cout << " ";
+		}
+	}
+}
+int main() {
+	int* a = new int;
+	*a = 1;
+	contorno(a);
+	cout << endl;
+	*a += 1;
+	system("pause");
+	clean();
+	contorno(a);
+	cout << endl;
+	*a += 1;
+	system("pause");
+	clean();
+	contorno(a);
+	cout << endl;
+	return 0;
+}
