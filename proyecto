@@ -1,10 +1,10 @@
 #include <iostream>
 #include <windows.h>
-#include <conio.h>
 #define BG_YELLOW  "\x1B[43m"
 #define BG_ORANGE  "\x1B[48;2;255;128;0m"
 #define BG_RED     "\x1B[41m"
 #define BG_GRAY    "\x1B[48;2;176;174;174m"
+#define BG_BLACK   "\x1B[40m"
 using namespace std;
 void logo(int i, int j) {
 	HANDLE salida = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -48,7 +48,7 @@ void logo(int i, int j) {
 		cout << " ";
 	}
 	if ((i == 11) && ((j >= 42 && j <= 44) || (j >= 56 && j <= 58) || (j >= 64 && j <= 65)
-		|| (j >= 68 && j <= 76))){
+		|| (j >= 68 && j <= 76))) {
 		SetConsoleTextAttribute(salida, BACKGROUND_RED);
 		cout << " ";
 	}
@@ -62,9 +62,9 @@ void logo(int i, int j) {
 		SetConsoleTextAttribute(salida, BACKGROUND_RED);
 		cout << " ";
 	}
-	if ((i == 14) && ((j >= 42 && j <= 43) || (j >= 45 && j <= 46) || (j >= 52 && j <= 53) || 
+	if ((i == 14) && ((j >= 42 && j <= 43) || (j >= 45 && j <= 46) || (j >= 52 && j <= 53) ||
 		(j >= 56 && j <= 57) || (j >= 60 && j <= 61) || (j >= 64 && j <= 65) || (j >= 68 && j <= 69)
-		|| (j >= 73 && j <= 76))){
+		|| (j >= 73 && j <= 76))) {
 		SetConsoleTextAttribute(salida, BACKGROUND_RED);
 		cout << " ";
 	}
@@ -102,7 +102,7 @@ void ganador(int i, int j) {
 	if ((i == 3) && (j >= 39 && j <= 79)) {
 		cout << " ";
 	}
-	if ((i == 4) && (j == 39 || j == 40 || j == 78 || j ==79 || (j >= 46 && j <= 72))) {
+	if ((i == 4) && (j == 39 || j == 40 || j == 78 || j == 79 || (j >= 46 && j <= 72))) {
 		cout << " ";
 	}
 	if ((i == 5) && (j == 39 || j == 40 || j == 78 || j == 79 || (j >= 46 && j <= 72))) {
@@ -114,10 +114,10 @@ void ganador(int i, int j) {
 	if ((i == 7) && (j == 40 || j == 41 || j == 78 || j == 77 || (j >= 46 && j <= 72))) {
 		cout << " ";
 	}
-	if ((i == 8) && (j == 41 || j == 42 || j == 77 || j == 76|| (j >= 46 && j <= 72))) {
+	if ((i == 8) && (j == 41 || j == 42 || j == 77 || j == 76 || (j >= 46 && j <= 72))) {
 		cout << " ";
 	}
-	if ((i == 9) && (j == 42 || j == 43 || j == 76|| j == 75 || (j >= 46 && j <= 72))) {
+	if ((i == 9) && (j == 42 || j == 43 || j == 76 || j == 75 || (j >= 46 && j <= 72))) {
 		cout << " ";
 	}
 	if ((i == 10) && (j == 43 || j == 44 || j == 75 || j == 74 || (j >= 46 && j <= 72))) {
@@ -232,8 +232,9 @@ void tablero() {
 			}
 		}
 	}
+	cout << BG_BLACK;
 }
-void contorno(int *a) {
+void contorno(int* a) {
 	HANDLE salida = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD c;
 	for (int i = 1; i <= 28; i++) {
@@ -244,7 +245,7 @@ void contorno(int *a) {
 			switch (*a) {
 			case 1: logo(i, j);
 				break;
-			case 2:instrucciones(i,j);
+			case 2:instrucciones(i, j);
 				break;
 			case 3: ganador(i, j);
 			}
@@ -262,10 +263,10 @@ void contorno(int *a) {
 				cout << char(188);
 			}
 			else if (j == 2 || j == 117) {
-			cout << char (186);
+				cout << char(186);
 			}
-			else if (i == 1 || i== 28) {
-			cout << char(205);
+			else if (i == 1 || i == 28) {
+				cout << char(205);
 			}
 		}
 	}
@@ -280,7 +281,9 @@ int main() {
 	contorno(a);
 	Sleep(10000);
 	system("cls");
+	tablero();
+	Sleep(3000);
+	system("cls");
 	contorno(a);
-	_getch();
 	return 0;
 }
