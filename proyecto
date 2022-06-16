@@ -2,6 +2,9 @@
 #include <windows.h>
 #include <conio.h>
 #define BG_YELLOW  "\x1B[43m"
+#define BG_ORANGE  "\x1B[48;2;255;128;0m"
+#define BG_RED     "\x1B[41m"
+#define BG_GRAY    "\x1B[48;2;176;174;174m"
 using namespace std;
 void logo(int i, int j) {
 	HANDLE salida = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -167,6 +170,67 @@ void ganador(int i, int j) {
 	}
 	if ((i == 26) && (j >= 49 && j <= 69)) {
 		cout << " ";
+	}
+}
+
+void tablero() {
+	HANDLE salida = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD c;
+	for (int i = 0; i <= 29; i++) {
+		for (int j = 0; j <= 119; j++) {
+			c.X = j;
+			c.Y = i;
+			SetConsoleCursorPosition(salida, c);
+			if ((i == 3 || i == 27) && (j >= 9 && j <= 94) || (j == 12 || j == 13 || j == 91 || j == 92)
+				&& (i >= 2 && i <= 28)) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i == 7 || i == 23) && (j >= 22 && j <= 81) || (j == 25 || j == 26
+				|| j == 77 || j == 78) && (i >= 6 && i <= 24)) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i == 11 || i == 19) && (j >= 35 && j <= 68) || (j == 38 || j == 39
+				|| j == 64 || j == 65) && (i >= 10 && i <= 20)) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 2 && i <= 4) && ((j >= 9 && j <= 16) || (j >= 48 && j <= 55) || (j >= 88 && j <= 94))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 6 && i <= 8) && ((j >= 22 && j <= 29) || (j >= 48 && j <= 55) || (j >= 74 && j <= 81))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 10 && i <= 12) && ((j >= 35 && j <= 42) || (j >= 48 && j <= 55) || (j >= 61 && j <= 68))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 14 && i <= 16) && ((j >= 22 && j <= 29) || (j >= 74 && j <= 81) || (j >= 9 && j <= 16)
+				|| (j >= 88 && j <= 94) || (j >= 35 && j <= 42) || (j >= 61 && j <= 68))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 26 && i <= 28) && ((j >= 9 && j <= 16) || (j >= 48 && j <= 55) || (j >= 88 && j <= 94))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 22 && i <= 24) && ((j >= 22 && j <= 29) || (j >= 48 && j <= 55) || (j >= 74 && j <= 81))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 18 && i <= 20) && ((j >= 35 && j <= 42) || (j >= 48 && j <= 55) || (j >= 61 && j <= 68))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i == 15) && ((j >= 9 && j <= 42) || (j >= 61 && j <= 94))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((j == 51 || j == 52) && ((i >= 2 && i <= 12) || (i >= 18 && i <= 28))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 10 && i <= 20) && (j >= 35 && j <= 68)) {
+				cout << BG_RED << " ";
+			}
+			else if ((i >= 6 && i <= 24) && (j >= 22 && j <= 81)) {
+				cout << BG_ORANGE << " ";
+			}
+			else if ((i >= 2 && i <= 28) && (j >= 9 && j <= 94)) {
+				cout << BG_YELLOW << " ";
+			}
+		}
 	}
 }
 void contorno(int *a) {
