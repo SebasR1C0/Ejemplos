@@ -1,0 +1,293 @@
+#include <iostream>
+#include <windows.h>
+#define BG_YELLOW  "\x1B[43m"
+#define BG_ORANGE  "\x1B[48;2;255;128;0m"
+#define BG_RED     "\x1B[41m"
+#define BG_GRAY    "\x1B[48;2;176;174;174m"
+#define BG_BLACK   "\x1B[40m"
+using namespace std;
+void logo(int i, int j, int* a) {
+	int b = 0;
+	HANDLE salida = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(salida, FOREGROUND_RED);
+	if (i == 4 && j == 35) {
+		cout << char(218);
+	}
+	else if (j == 83 && i == 4) {
+		cout << char(191);
+	}
+	else if (j == 35 && i == 19) {
+		cout << char(192);
+	}
+	else if (j == 83 && i == 19) {
+		cout << char(217);
+	}
+	else if ((j == 35 || j == 83) && (i >= 4 && i <= 19)) {
+		cout << char(179);
+	}
+	else if ((i == 4 || i == 19) && (j >= 35 && j <= 83)) {
+		cout << char(196);
+	}
+	if ((i == 6) && (j == 42 || j == 43 || j == 48 || j == 49)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 7) && (j == 42 || j == 43 || j == 47 || j == 48)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 8) && (j == 42 || j == 43 || j == 46 || j == 47)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 9) && (j == 42 || j == 43 || j == 45 || j == 46)) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 10) && ((j >= 42 && j <= 45) || (j == 52 || j == 53))) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 11) && ((j >= 42 && j <= 44) || (j >= 56 && j <= 58) || (j >= 64 && j <= 65)
+		|| (j >= 68 && j <= 76))) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 12) && ((j >= 42 && j <= 44) || (j >= 52 && j <= 53) || (j >= 56 && j <= 59) ||
+		(j >= 64 && j <= 65) || (j >= 68 && j <= 69))) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 13) && ((j >= 42 && j <= 45) || (j >= 52 && j <= 53) || (j >= 56 && j <= 57) ||
+		(j >= 59 && j <= 60) || (j >= 64 && j <= 65) || (j >= 68 && j <= 69))) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 14) && ((j >= 42 && j <= 43) || (j >= 45 && j <= 46) || (j >= 52 && j <= 53) ||
+		(j >= 56 && j <= 57) || (j >= 60 && j <= 61) || (j >= 64 && j <= 65) || (j >= 68 && j <= 69)
+		|| (j >= 73 && j <= 76))) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 15) && ((j >= 42 && j <= 43) || (j >= 46 && j <= 47) || (j >= 52 && j <= 53) ||
+		(j >= 56 && j <= 57) || (j >= 61 && j <= 62) || (j >= 64 && j <= 65) || (j >= 68 && j <= 69)
+		|| (j >= 75 && j <= 76))) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 16) && ((j >= 42 && j <= 43) || (j >= 47 && j <= 48) || (j >= 52 && j <= 53) ||
+		(j >= 56 && j <= 57) || (j >= 62 && j <= 65) || (j >= 68 && j <= 69) || (j >= 75 && j <= 76))) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if ((i == 17) && ((j >= 42 && j <= 43) || (j >= 48 && j <= 49) || (j >= 52 && j <= 53) ||
+		(j >= 56 && j <= 57) || (j >= 63 && j <= 65) || (j >= 68 && j <= 76))) {
+		SetConsoleTextAttribute(salida, BACKGROUND_RED);
+		cout << " ";
+	}
+	if (*a == 0) {
+		if (i == 23 && j == 5) {
+			cout << "	Integrantes:" << endl;
+			cout << "	Rojas Cadillo, Cesar Sebastian" << endl;
+			cout << "	Cardenas Coronado, Jose Isaac" << endl;
+			cout << "	Chipana Zambrano, Kenneth Pedro" << endl;
+		}
+	}
+	if (*a == 3) {
+		if (i == 21 && j == 4) {
+				cout << "	JUEGO DEL MOLINO" << endl << endl;
+				cout << "     Menu" << endl;
+				cout << "	1) Instrucciones" << endl;
+				cout << "	2) Jugar" << endl;
+				cout << "	Elija una opcion: ";
+				cin >> *a;
+		}
+	}
+}
+void instrucciones(int i, int j) {
+	if (i == 5 && j == 5) {
+		cout << "	Instrucciones:" << endl;
+	}
+}
+void ganador(int i,int j) {
+	cout << BG_YELLOW;
+	if ((i == 3) && (j >= 39 && j <= 79)) {
+		cout << " ";
+	}
+	if ((i >= 4 && i <= 6) && (j == 39 || j == 40 || j == 78 || j == 79 || (j >= 46 && j <= 72))) {
+		cout << " ";
+	}
+	if ((i == 7) && (j == 40 || j == 41 || j == 78 || j == 77 || (j >= 46 && j <= 72))) {
+		cout << " ";
+	}
+	if ((i == 8) && (j == 41 || j == 42 || j == 77 || j == 76 || (j >= 46 && j <= 72))) {
+		cout << " ";
+	}
+	if ((i == 9) && (j == 42 || j == 43 || j == 76 || j == 75 || (j >= 46 && j <= 72))) {
+		cout << " ";
+	}
+	if ((i == 10) && (j == 43 || j == 44 || j == 75 || j == 74 || (j >= 46 && j <= 72))) {
+		cout << " ";
+	}
+	if ((i == 11) && (j == 44 || j == 45 || j == 74 || j == 73 || (j >= 46 && j <= 72))) {
+		cout << " ";
+	}
+	if ((i == 12) && (j >= 46 && j <= 72)) {
+		cout << " ";
+	}
+	if ((i == 13) && (j >= 47 && j <= 71)) {
+		cout << " ";
+	}
+	if ((i == 14) && (j >= 49 && j <= 69)) {
+		cout << " ";
+	}
+	if ((i == 15) && (j >= 51 && j <= 67)) {
+		cout << " ";
+	}
+	if ((i == 16 || i == 17) && (j >= 53 && j <= 65)) {
+		cout << " ";
+	}
+	if ((i == 18) && (j >= 55 && j <= 63)) {
+		cout << " ";
+	}
+	if ((i == 19) && (j >= 56 && j <= 62)) {
+		cout << " ";
+	}
+	if ((i >= 20 && i <= 24) && (j >= 57 && j <= 61)) {
+		cout << " ";
+	}
+	if ((i == 25 || i == 26) && (j >= 49 && j <= 69)) {
+		cout << " ";
+	}
+}
+
+void tablero() {
+	HANDLE salida = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD c;
+	for (int i = 0; i <= 29; i++) {
+		for (int j = 0; j <= 119; j++) {
+			c.X = j;
+			c.Y = i;
+			SetConsoleCursorPosition(salida, c);
+			if ((i == 3 || i == 27) && (j >= 9 && j <= 94) || (j == 12 || j == 13 || j == 91 || j == 92)
+				&& (i >= 2 && i <= 28)) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i == 7 || i == 23) && (j >= 22 && j <= 81) || (j == 25 || j == 26
+				|| j == 77 || j == 78) && (i >= 6 && i <= 24)) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i == 11 || i == 19) && (j >= 35 && j <= 68) || (j == 38 || j == 39
+				|| j == 64 || j == 65) && (i >= 10 && i <= 20)) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 2 && i <= 4) && ((j >= 9 && j <= 16) || (j >= 48 && j <= 55) || (j >= 88 && j <= 94))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 6 && i <= 8) && ((j >= 22 && j <= 29) || (j >= 48 && j <= 55) || (j >= 74 && j <= 81))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 10 && i <= 12) && ((j >= 35 && j <= 42) || (j >= 48 && j <= 55) || (j >= 61 && j <= 68))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 14 && i <= 16) && ((j >= 22 && j <= 29) || (j >= 74 && j <= 81) || (j >= 9 && j <= 16)
+				|| (j >= 88 && j <= 94) || (j >= 35 && j <= 42) || (j >= 61 && j <= 68))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 26 && i <= 28) && ((j >= 9 && j <= 16) || (j >= 48 && j <= 55) || (j >= 88 && j <= 94))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 22 && i <= 24) && ((j >= 22 && j <= 29) || (j >= 48 && j <= 55) || (j >= 74 && j <= 81))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 18 && i <= 20) && ((j >= 35 && j <= 42) || (j >= 48 && j <= 55) || (j >= 61 && j <= 68))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i == 15) && ((j >= 9 && j <= 42) || (j >= 61 && j <= 94))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((j == 51 || j == 52) && ((i >= 2 && i <= 12) || (i >= 18 && i <= 28))) {
+				cout << BG_GRAY << " ";
+			}
+			else if ((i >= 10 && i <= 20) && (j >= 35 && j <= 68)) {
+				cout << BG_RED << " ";
+			}
+			else if ((i >= 6 && i <= 24) && (j >= 22 && j <= 81)) {
+				cout << BG_ORANGE << " ";
+			}
+			else if ((i >= 2 && i <= 28) && (j >= 9 && j <= 94)) {
+				cout << BG_YELLOW << " ";
+			}
+		}
+	}
+	cout << BG_BLACK;
+}
+void contorno(int *a) {
+	HANDLE salida = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD c;
+	for (int i = 1; i <= 28; i++) {
+		for (int j = 2; j <= 117; j++) {
+			c.X = j;
+			c.Y = i;
+			SetConsoleCursorPosition(salida, c);
+			SetConsoleTextAttribute(salida, FOREGROUND_INTENSITY);
+			if (i == 1 && j == 2) {
+				cout << char(201);
+			}
+			else if (j == 117 && i == 1) {
+				cout << char(187);
+			}
+			else if (j == 2 && i == 28) {
+				cout << char(200);
+			}
+			else if (j == 117 && i == 28) {
+				cout << char(188);
+			}
+			else if (j == 2 || j == 117) {
+				cout << char(186);
+			}
+			else if (i == 1 || i == 28) {
+				cout << char(205);
+			}
+			switch (*a) {
+			default: logo(i, j, a);
+				break;
+			case 1: instrucciones(i, j);
+				break;
+			case 2: ganador(i, j);
+			}
+			SetConsoleTextAttribute(salida, FOREGROUND_INTENSITY);
+		}
+	}
+	switch (*a) {
+	case 0: Sleep(1000);
+		system("cls");
+		break;
+	case 1:
+		Sleep(1000);
+		system("cls");
+	}
+}
+void menu(int *a) {
+	do {
+		contorno(a);
+		switch (*a) {
+		default: contorno(a);
+			break;
+		case 2: tablero();
+			Sleep(1000);
+			system("cls");
+			contorno(a);
+		}
+		if (*a != 2) *a = 3;
+	} while(*a != 2);
+}
+int main() {
+	int* a = new int;
+	*a = 0;
+	contorno(a);
+	*a = 3;
+	menu(a);
+	delete a;
+	return 0;
+}
