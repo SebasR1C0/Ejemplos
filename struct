@@ -1,0 +1,124 @@
+struct Persona
+{
+    char terma;//(S)i, (N)o
+    double horasterma;
+    char microondas;//(S)i, (N)o
+    double horasmicro;
+    char lavadora;//(S)i, (N)o
+    double horaslava;
+    double consumoKW;
+};
+void Generar_Datos(Persona* V, int N)
+{
+    Random x;
+    char Tiene[2] = { 'S','N' };
+    int indice;
+    for (int i = 0; i < N; i++)
+    {
+        indice = x.Next(0, 2);//Generando de 0 a 1
+        V[i].terma = Tiene[indice];
+        indice = x.Next(0, 2);//Generando de 0 a 1
+        V[i].microondas = Tiene[indice];
+        indice = x.Next(0, 2);//Generando de 0 a 1
+        V[i].lavadora = Tiene[indice];
+        if (V[i].microondas == 'S')
+        {
+            V[i].horasmicro = x.Next(10, 51);//Genero del 10 al 50
+            V[i].horasmicro = V[i].horasmicro / 10.0;
+        }
+        else V[i].horasmicro = 0;
+        if (V[i].lavadora == 'S')
+        {
+            V[i].horaslava = x.Next(10, 51);//Genero del 10 al 50
+            V[i].horaslava = V[i].horaslava / 10.0;
+        }
+        else V[i].horaslava = 0;
+        if (V[i].terma == 'S')
+        {
+            V[i].horasterma = x.Next(10, 51);//Genero del 10 al 50
+            V[i].horasterma = V[i].horasterma / 10.0;
+        }
+        else V[i].horasterma = 0;
+        V[i].consumoKW = (V[i].horasterma * 1500 + V[i].horasmicro * 1100 + V[i].horaslava * 500) / 1000.0;
+    }
+}
+void Mostrar_Datos(Persona* V, int N)
+{
+    cout << "Terma\tHoras\tMicro\tHoras\tLava\tHoras\tConsumo" << endl;
+    for (int i = 0; i < N; i++)
+    {
+        cout << V[i].terma << "\t" << V[i].horasterma << "\t" << V[i].microondas << "\t" << V[i].horasmicro << "\t" << V[i].lavadora << "\t" <<
+            V[i].horaslava << "\t" << V[i].consumoKW << endl;
+    }
+}
+void Contar_Clientes_3Artefactos(Persona* V, int N)
+{
+    int cont = 0;
+    for (int i = 0; i < N; i++)
+    {
+        if (V[i].lavadora == 'S' && V[i].microondas == 'S' && V[i].terma == 'S')
+        {
+            cont++;
+        }
+    }
+    cout << "Numero de personas que cuentan con los 3 artefactos: " << cont << endl;
+}
+void Cuenta_Menor_Cantidad(Persona* V, int N)
+{
+    int menor = V[0].consumoKW;
+    for (int i = 1; i < N; i++)
+    {
+        if (V[i].consumoKW < menor)menor = V[i].consumoKW;
+    }
+    int cont = 0;
+    for (int i = 0; i < N; i++)
+    {
+        if (V[i].consumoKW == menor)
+        {
+            cont++;
+        }
+    }
+    cout << "Cantidad de personas con el menor consumo: " << cont << endl;
+}
+void Promedio_Consumo(Persona* V, int N)
+{
+    double suma = 0;
+    for (int i = 0; i < N; i++)
+    {
+        suma += V[i].consumoKW;
+    }
+    cout << "Promedio de consumo por dia de todos los clientes: " << suma / N << endl;
+}
+void Ordenar_DescendentexConsumo(Persona* V, int N)
+{
+    Persona aux;
+    for (int i = 0; i < N - 1; i++)
+    {
+        for (int j = i + 1; j < N; j++)
+        {
+            if (V[i].consumoKW < V[j].consumoKW)
+            {
+                aux = V[i];
+                V[i] = V[j];
+                V[j] = aux;
+            }
+        }
+    }
+}
+int main()
+{
+    int N;
+    do {
+        cout << "Ingresar numero de encuestados: ";
+        cin >> N;
+    } while (N > 50);
+    Persona* VPersona = new Persona[N];
+    Generar_Datos(VPersona, N);
+    Mostrar_Datos(VPersona, N);
+    Contar_Clientes_3Artefactos(VPersona, N);
+    Cuenta_Menor_Cantidad(VPersona, N);
+    Promedio_Consumo(VPersona, N);
+    Ordenar_DescendentexConsumo(VPersona, N);
+    Mostrar_Datos(VPersona, N);
+    system("pause");
+}
