@@ -1,0 +1,107 @@
+#include <iostream>
+#include <string>
+#include "util.h"
+using namespace std;
+class Persona {
+private:
+	string nombre;
+	string apellido;
+	string distrito;
+	int edad;
+	int DNI;
+public:
+	Persona(string nombre, string apellido, string distrito, int edad, int DNI) {
+		this->nombre = nombre;
+		this->apellido = apellido;
+		this->distrito = distrito;
+		this->edad = edad;
+		this->DNI = DNI;
+	}
+	Persona(string nombre, string apellido) {
+		this->nombre = nombre;
+		this->apellido = apellido;
+		this->distrito = "";
+		this->edad = 0;
+		this->DNI = 0;
+	}
+	~Persona() {
+	}
+	string getNombre() {
+		return nombre;
+	}
+	string getApellido() {
+		return apellido;
+	}
+	string getDistrito() {
+		return distrito;
+	}
+	int getEdad() {
+		return edad;
+	}
+	int getDNI() {
+		return DNI;
+	}
+	void setNombre(string nombre) {
+		this->nombre = nombre;
+	}
+	void setApellido(string apellido) {
+		this->apellido = apellido;
+	}
+	void setDistrito(string distrito) {
+		this->distrito = distrito;
+	}
+	void setEdad(int edad) {
+		this->edad = edad;
+	}
+	void setDNI(int DNI) {
+		this->DNI = DNI;
+	}
+	//metodos publicos
+	void calcularMontosPagar(int cantidadUno, int cantidadDos) {
+		int suma = cantidadUno + cantidadDos;
+		cout << "El monto a pagar es: " << suma << endl;
+	}
+	void calcularMontosPagar(double cantidadUno, double cantidadDos) {
+		double suma = cantidadUno + cantidadDos;
+		cout << "El monto a pagar es: " << suma << endl;
+	}
+	void realizarConsulta(bool& respuesta) {
+		if (respuesta) {
+			respuesta = false;
+		}
+		else {
+			respuesta = true;
+		}
+	}
+	void mostrarInformacion() {
+		cout << "Nombre: " << nombre << endl;
+		cout << "Apellido: " << apellido << endl;
+		cout << "Distrito: " << distrito << endl;
+		cout << "Edad: " << edad << endl;
+	 cout << "DNI: " << DNI << endl;
+	}
+};
+#ifdef MAIN3
+int main() {
+	Persona* persona = new Persona("Juan", "Perez", "Miraflores", 15, 54265301);
+	persona->mostrarInformacion();
+	bool respuesta = true;
+	cout << "Respuesta: " << respuesta << endl;
+	cout << endl << endl;
+	cout << "Nombre get: " << persona->getNombre() << endl;
+	cout << "Apellido get: " << persona->getApellido() << endl;
+	// Modificamos
+	persona->setNombre("Enrique");
+	persona->setApellido("Lopez");
+	persona->setEdad(10);
+	cout << endl;
+	// Mostramos nuevamente
+	persona->mostrarInformacion();
+	// Métodos
+	persona->realizarConsulta(respuesta);
+	cout << "Respuesta: " << respuesta << endl;
+	persona->calcularMontosPagar(10, 20);
+	persona->calcularMontosPagar(12.5, 54.12);
+	return 0;
+}
+#endif
